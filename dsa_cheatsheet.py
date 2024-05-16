@@ -1,3 +1,4 @@
+from collections import defaultdict
 import typing
 
 
@@ -66,9 +67,48 @@ def say_hello():
     for i in range(26):
         print(chr(i + ord("a")))
 
-    # Sort won't work on arrays of mixed types
-    arr.sort()
+    # Sort won't work on arrays of mixed types, can provide custom sorting function
+    arr = [(1, 2), (5, 2), (2, 1), (1, 12), (11, 1), (5, 2)]
+    arr.sort(
+        key=get_second_val,
+    )
     print(arr)
+
+    # Equivalent lambda
+    arr = [(1, 2), (5, 2), (2, 1), (1, 12), (11, 1), (5, 2)]
+    arr.sort(
+        key=lambda t: t[-1],
+    )
+    print(arr)
+
+    # default dict can be used with a default value for missing keys
+    dm = defaultdict(lambda: "Missing")
+    print("Key: ", dm["missing"])
+
+    # default dict with 0 values
+    dm = defaultdict(int)
+    print("Not here: ", dm["somekey"])
+
+    print(dm)
+
+    # Mutable objects are pass by reference & immutable objects are pass by value
+    n = 3
+    double_this(n)
+    print(n)  # Unchanged
+
+    n = [3, 2]
+    double_this(n)
+    print(n)  # Array is mutable and gets updated
+
+
+# Function definition like this
+# No need to specify return value, although can do like this
+def get_second_val(e) -> int:
+    return e[-1]
+
+
+def double_this(n):
+    n *= 2
 
 
 # Path: main.py
