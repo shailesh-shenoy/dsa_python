@@ -1,4 +1,5 @@
 from collections import defaultdict
+import math
 import typing
 
 
@@ -8,8 +9,21 @@ def say_hello():
     # Types are optional, infact don't use it unless required
     a = "some str"  # No need to declare that a is str
     a = 19  # Reassign to different type works
-    n: int = 10
+    n: int = -11
+
     f: float = 10.0
+    f = (int)(f)  # Type casting (int) is equivalent to int(f)
+    print(f)
+    f: float = 10.0
+    f = int(f)  # Type casting (int) is equivalent to int(f)
+    print(f)
+    print(n / f)  # Division always returns float
+    print(n // f)  # special operator called integer division, returns int
+    # // Operator has different behavior in python for negative numbers, it returns floor value
+    print(
+        math.floor(n / f)
+    )  # Floor function can be used to get same behavior as // operator
+    print(int(n / f))  # Type casting to int returns as expected from other languages
     b: bool = True
     s: str = "abcd"
     a = s  # No warning
@@ -30,10 +44,18 @@ def say_hello():
 
     print(m)
 
+    print("LISTS")
     # Lists are arrays
     arr = [1, 2, 4.0, "str", True]
     arr.append(a)
     print(arr)
+
+    # List slicing
+    print(arr[1:3])  # 1 inclusive, 3 exclusive
+    print(arr[1:])  # 1 inclusive, till end
+    print(arr[:3])  # 0 inclusive, 3 exclusive
+    print(arr[:-1])  # 0 inclusive, -1 exclusive (last element)
+    print(arr[-1:])  # -1 inclusive (last element), till end, i.e. last element only
 
     # No traditional loop for(int = 0; i < n; i++) in python
     # Alternatives
