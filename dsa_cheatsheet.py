@@ -133,6 +133,24 @@ def double_this(n):
     n *= 2
 
 
+# Stacks
+# Python lists can be used as stacks, with append and pop
+def stack_example():
+    stack = []
+    stack.append(1)
+    stack.append(2)
+    stack.append(3)
+    # Peek
+    print(stack[-1])
+    print(stack.pop())
+    print(stack.pop())
+    print(stack.pop())
+    # Check if stack is empty
+    print(not stack)
+    # Try to pop stack
+    print(stack.pop() if stack else "Empty stack")
+
+
 # Path: main.py
 if __name__ == "__main__":
     say_hello()

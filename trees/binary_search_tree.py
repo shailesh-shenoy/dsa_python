@@ -67,12 +67,39 @@ class BinarySearchTree:
         print(curr.val)
         self.in_order_traversal(curr.right)
 
+    def in_order_traversal_iterative(self, curr: TreeNode):
+        if not curr:
+            return
+
+        stack = []
+
+        while stack or curr:
+            while curr:
+                stack.append(curr)
+                curr = curr.left
+            curr = stack.pop()
+            print(curr.val)
+            curr = curr.right
+
     def pre_order_traversal(self, curr: TreeNode):
         if not curr:
             return
         print(curr.val)
         self.pre_order_traversal(curr.left)
         self.pre_order_traversal(curr.right)
+
+    def pre_order_traversal_iterative(self, curr: TreeNode):
+        if not curr:
+            return
+        st = [curr]
+
+        while st:
+            curr = st.pop()
+            print(curr.val)
+            if curr.right:
+                st.append(curr.right)
+            if curr.left:
+                st.append(curr.left)
 
     def post_order_traversal(self, curr: TreeNode):
         if not curr:
@@ -94,8 +121,12 @@ if __name__ == "__main__":
     bst.add(8, "eight")
     print("In order traversal")
     bst.traversal()
+    print("In order traversal iterative")
+    bst.in_order_traversal_iterative(bst.root)
     print("preorder traversal")
     bst.traversal(type="preorder")
+    print("preorder traversal iterative")
+    bst.pre_order_traversal_iterative(bst.root)
     print("postorder traversal")
     bst.traversal(type="postorder")
     print("Binary Search")
