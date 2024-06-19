@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, deque
 import math
 import typing
 
@@ -121,6 +121,16 @@ def say_hello():
     n = [3, 2]
     double_this(n)
     print(n)  # Array is mutable and gets updated
+
+    # Queues
+
+    # Python has deque for built in queue data structure (implemented as doubly linked list, can push and pop at both ends)
+    queue = deque([3, 1, 5, 2, 3, 1])
+    queue.append(7)
+    queue.appendleft(-1)
+    print("QUEUE: ", queue)
+    print(queue.popleft())
+    print(queue.pop())
 
 
 # Function definition like this
